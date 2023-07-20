@@ -1,0 +1,104 @@
+/* import */
+@import "./modules/variables";
+@import "./modules/mixins";
+@import "./partials/normalize";
+
+/* general */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 62.25%;
+  scroll-behavior: smooth;
+  position: relative;
+  background-color: $whiteColor;
+}
+
+/* web accessibility - don't touch this */
+*:focus {
+  outline: none;
+}
+
+body.user-is-tabbing *:focus {
+  outline: 2px solid $blueColor;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.accessibility-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.accessibility-options__btn,
+.accessibility-options__skip-link {
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  padding: 24px 48px;
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  z-index: 999;
+  color: $whiteColor;
+  background-color: $blueColor;
+  border: none;
+  border-radius: 5px;
+  line-height: 0;
+  font-weight: 500;
+  font-size: 1.8rem;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  &:focus,
+  &:active {
+    clip: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+    width: auto;
+    white-space: normal;
+  }
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: $whiteColor;
+}
+
+::-webkit-scrollbar-thumb {
+  @include gradient();
+  border-radius: 5px;  
+}
