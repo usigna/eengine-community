@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <title>EENGINE.Community</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@500;700;900&display=swap" rel="stylesheet" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
 
@@ -25,6 +25,61 @@
         <a href="#main" class="accessibility-options__skip-link">Przejdź do treści</a>
       </li>
     </ul>
+
+    <header class="header">
+      <div class="header__wrapper wrapper wrapper--large">
+        <div class="header__item">
+          <a href="#" class="logo">
+            <img src="img/logo.svg" alt="EENGINE Community - strona główna" />
+          </a>
+        </div>
+        <div class="header__item">
+          <button class="hamburger" aria-expanded="false">
+            <span class="sr-only">Otwórz/zamknij menu</span>
+            <span class="hamburger__box">
+              <span class="hamburger__inner"></span>
+            </span>
+          </button>
+          <nav class="navigation">
+            <ul class="menu">
+              <li class="menu__item">
+                <a href="#about-us" class="menu__link">O serwerze</a>
+              </li>
+              <li class="menu__item">
+                <a href="#benefits" class="menu__link">Korzyści</a>
+              </li>
+              <li class="menu__item">
+                <a href="#projects" class="menu__link">Projekty</a>
+              </li>
+              <li class="menu__item">
+                <a href="#statistics" class="menu__link">Statystyki</a>
+              </li>
+              <li class="menu__item">
+                <a href="#faq" class="menu__link">FAQ</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header__item">
+          <div class="button-wrapper button-wrapper--laptop">
+            <a href="#" class="btn btn--fill">
+              <img src="img/discord.svg" alt="" />Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="section" id="hero"></section>
+      <section class="section" id="about-us"></section>
+      <section class="section" id="benefits"></section>
+      <section class="section" id="projects"></section>
+      <section class="section" id="statistics"></section>
+      <section class="section" id="faq"></section>
+    </main>
+
+    <footer class="footer"></footer>
 
     <script src="js/app.js"></script>
   </body>
