@@ -157,6 +157,19 @@ body.user-is-tabbing *:focus {
       font-size: 2.37rem;
     }
   }
+
+  &--404 {
+    margin: 0 0 24px;
+    font-size: 10rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+
+    @media screen and (min-width: $laptopWidth) {
+      margin: 0;
+      font-size: 20rem;
+    }
+  }
 }
 
 .text {
@@ -520,6 +533,10 @@ body.user-is-tabbing *:focus {
     @media screen and (min-width: $laptopWidth) {
       padding: 48px;
     }
+  }
+
+  &--404 {
+    @include flex(column, center, center);
   }
 }
 
