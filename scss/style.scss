@@ -73,7 +73,7 @@ body.user-is-tabbing *:focus {
   border-radius: 5px;
   line-height: 0;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
   outline: none;
   &:focus,
@@ -107,13 +107,13 @@ body.user-is-tabbing *:focus {
 .wrapper {
   width: 100%;
   margin: 0 auto;
-  color: $whiteColor;
+  color: $blackColor;
   font-size: 1.6rem;
   font-weight: 500;
   font-family: "Poppins", sans-serif;
 
   @media screen and (min-width: $tabletWidth) {
-    font-size: 1.8rem;
+    // font-size: 1.8rem;
   }
 
   &--large {
@@ -121,23 +121,15 @@ body.user-is-tabbing *:focus {
     max-width: 1640px;
 
     @media screen and (min-width: $tabletWidth) {
-      width: calc(100% - 80px);
-    }
-
-    @media screen and (min-width: $tvWidth) {
-      width: calc(100% - 160px);
+      width: calc(100% - 128px);
     }
   }
 
   &--small {
     max-width: 1544px;
-    width: calc(100% - 40px);
+    width: calc(100% - 80px);
 
     @media screen and (min-width: $tabletWidth) {
-      width: calc(100% - 128px);
-    }
-
-    @media screen and (min-width: $tvWidth) {
       width: calc(100% - 256px);
     }
   }
@@ -147,6 +139,12 @@ body.user-is-tabbing *:focus {
 .title {
   &--h1 {
     font-size: 3.16rem;
+    margin: 0 0 24px;
+
+    span {
+      text-transform: uppercase;
+      color: $darkBlueColor;
+    }
 
     @media screen and (min-width: $laptopWidth) {
       font-size: 4.2rem;
@@ -155,6 +153,7 @@ body.user-is-tabbing *:focus {
 
   &--h2 {
     font-size: 2.37rem;
+    margin: 0 0 24px;
 
     @media screen and (min-width: $laptopWidth) {
       font-size: 3.16rem;
@@ -163,6 +162,7 @@ body.user-is-tabbing *:focus {
 
   &--h3 {
     font-size: 1.78rem;
+    margin: 0 0 12px;
 
     @media screen and (min-width: $laptopWidth) {
       font-size: 2.37rem;
@@ -171,11 +171,7 @@ body.user-is-tabbing *:focus {
 }
 
 .text {
-  font-size: 1.6rem;
-
-  @media screen and (min-width: $laptopWidth) {
-    font-size: 1.8rem;
-  }
+  margin: 0 0 24px;
 }
 
 /* header */
@@ -294,7 +290,8 @@ body.user-is-tabbing *:focus {
   width: 100%;
   height: auto;
   @include flex(column, center, center);
-  background-color: $lightBlueColor;
+  background-color: $whiteColor;
+  border-bottom: 2px solid $lightBlueColor;
   padding: 128px 0;
   position: absolute;
   top: 0;
@@ -311,6 +308,7 @@ body.user-is-tabbing *:focus {
   transition: transform .3s .1s ease-in-out, visibility 0s .4s, -webkit-transform .3s .1s ease-in-out;
 
   @media screen and (min-width: $laptopWidth) {
+    border-bottom: none;
     padding: 0;
     background-color: transparent;
     visibility: visible;
@@ -352,6 +350,11 @@ body.user-is-tabbing *:focus {
   color: $blackColor;
   text-decoration: none;
 
+  &:hover,
+  &:focus {
+    color: $darkBlueColor;
+  }
+
   @media screen and (min-width: $laptopWidth) {
     position: relative;
 
@@ -373,10 +376,18 @@ body.user-is-tabbing *:focus {
     &:focus::before {
       transform: scaleX(1);
     }
+  
+    &:hover,
+    &:focus {
+      color: $blackColor;
+    }
   }
 }
 
+/* button */
 .button-wrapper {
+  @include flex(row, center, center);
+
   &--laptop {
     display: none;
 
@@ -388,7 +399,7 @@ body.user-is-tabbing *:focus {
 
 .btn {
   text-decoration: none;
-  padding: 12px 48px;
+  font-weight: 700;
   @include flex(row, center, center);
   gap: 8px;
   position: relative;
@@ -398,10 +409,10 @@ body.user-is-tabbing *:focus {
   }
 
   &--fill {
-    color: $whiteColor;
-    font-weight: 700;
-    background-color: $blueColor;
+    padding: 12px 48px;
     border-radius: 5px;
+    color: $whiteColor;
+    background-color: $blueColor;
     z-index: 0;
 
     &::before {
@@ -422,5 +433,378 @@ body.user-is-tabbing *:focus {
     &:focus::before {
       transform: scaleX(1);
     }
+  }
+
+  &--line {
+    color: $blackColor;
+    position: relative;
+    z-index: 0;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 100%;
+      height: 6px;
+      border-radius: 5px;
+      position: absolute;
+      left: 0;
+      bottom: 1.5px;
+      z-index: -1;
+
+      @media screen and (min-width: $laptopWidth) {
+        width: 110%;
+      }
+    }
+
+    &::before {
+      background-color: $lightBlueColor;
+    }
+
+    &::after {
+      background-color: $darkBlueColor;
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* section */
+.section {
+  padding: 12px 0;
+
+  @media screen and (min-width: $laptopWidth) {
+    padding: 24px 0;
+  }
+
+  &--bg-color {
+    background-color: $yellowColor;
+  }
+}
+
+.section__wrapper {
+  padding: 32px 0;
+  text-align: center;
+
+  @media screen and (min-width: $laptopWidth) {
+    padding: 64px 0;
+    text-align: left;
+  }
+
+  &--two-cols {
+    @include flex(column, center, center);
+    gap: 24px;
+
+    @media screen and (min-width: $laptopWidth) {
+      @include flex(row, center, space-between);
+    }
+  }
+
+  &--reverse {
+    flex-direction: column-reverse;
+
+    @media screen and (min-width: $laptopWidth) {
+      flex-direction: row;
+    }
+  }
+
+  &--dark {
+    color: $whiteColor;
+    background-color: $blackColor;
+    border-radius: 25px;
+    padding: 24px;
+
+    @media screen and (min-width: $laptopWidth) {
+      padding: 48px;
+    }
+  }
+}
+
+.image-wrapper {
+  &--w40 {
+    width: 100%;
+    line-height: 0;
+
+    @media screen and (min-width: $laptopWidth) {
+      width: 40%;
+    }
+
+    img {
+      width: 80%;
+      max-width: 500px;
+
+      @media screen and (min-width: $laptopWidth) {
+        width: 90%;
+      }
+    }
+  }
+}
+
+.text-wrapper {
+  &--w60 {
+    width: 100%;
+
+    @media screen and (min-width: $laptopWidth) {
+      width: 60%;
+    }
+
+    .text {
+      margin: 0 0 24px;
+    }
+
+    .button-wrapper {
+      @media screen and (min-width: $laptopWidth) {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+.items {
+  @include flex(column, flex-start, center);
+  gap: 24px;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (min-width: $laptopWidth) {
+    text-align: left;
+  }
+}
+
+.item {
+  @include flex(column, flex-start, center);
+  gap: 12px;
+
+  @media screen and (min-width: $laptopWidth) {
+    @include flex(row, flex-start, flex-start);
+    gap: 24px;
+  }
+
+  .image-wrapper {
+    width: 56px;
+    height: 56px;
+    background-color: $blueColor;
+    border-radius: 50%;
+    padding: 16px;
+    margin: 0 auto;
+
+    @media screen and (min-width: $laptopWidth) {
+      min-width: 56px;
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .text {
+    margin: 0;
+  }
+}
+
+/* slider */
+.slider-wrapper {
+  position: relative;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__btn {
+  width: 56px;
+  height: 56px;
+  background-color: $blackColor;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  @include flex(row, center, center);
+  position: absolute;
+  top: calc(50% - 24px);
+  padding: 16px;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $whiteColor;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    transform: scale(100%);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $darkBlueColor;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--left {
+    left: -25px;
+  }
+
+  &--right {
+    right: -25px;
+  }
+}
+
+.boxes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  @media screen and (min-width: $laptopWidth) {
+    gap: 24px;
+  }
+}
+
+.box {
+  flex: 1 0 100%;
+  @include flex(column, center, center);
+  gap: 12px;
+  background-color: $whiteColor;
+  border-radius: 25px;
+
+  @media screen and (min-width: $laptopWidth) {
+    flex: 1 0 49%;
+  }
+
+  @media screen and (min-width: $laptopWidth) {
+    @include flex(row, center, center);
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: $whiteColor;
+    background-color: yellow;
+
+    @media screen and (min-width: $laptopWidth) {
+      width: 35%;
+      height: 100%;
+      border-bottom-left-radius: 25px;
+      border-top-right-radius: 0;
+    }
+  }
+
+  .text-wrapper {
+    width: 100%;
+    padding: 0 24px 24px;
+    @include flex(column, center, flex-start);
+
+    @media screen and (min-width: $laptopWidth) {
+      width: 65%;
+      align-items: flex-start;;
+    }
+
+    .text {
+      margin: 0 0 24px;
+    }
+
+    .button-wrapper {
+      margin: 0 auto;
+
+      @media screen and (min-width: $laptopWidth) {
+        text-align: left;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.project-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.project-img--1 {
+  background-image: url("../img/projects/pigeons.png");
+}
+
+/* faq */
+.faq {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include flex(column, center, center);
+  gap: 24px;
+}
+
+.faq__item {
+  width: 100%;
+}
+
+.faq__btn {
+  width: 100%;
+  padding: 12px 24px;
+  @include flex(row, center, space-between);
+  border: none;
+  border-radius: 5px;
+  color: $whiteColor;
+  background-color: $blackColor;
+  text-align: left;
+
+  img {
+    height: 24px;
+    margin-left: 24px;
+  }
+}
+
+.faq__sect {
+  padding: 12px 24px;
+  display: none;
+  text-align: left;
+}
+
+/* footer */
+.footer {
+  padding: 24px 0;
+}
+
+.footer__wrapper {
+  font-size: 1.4rem;
+  @include flex(row, flex-end, space-between);
+  position: relative;
+}
+
+.footer__img {
+  width: 30%;
+  line-height: 0;
+
+  img {
+    width: 100%;
   }
 }

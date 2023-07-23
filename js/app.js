@@ -9,7 +9,7 @@ function handleFirstTab(e) {
     document.body.classList.add('user-is-tabbing');
     window.removeEventListener('keydown', handleFirstTab);
   }
-}
+};
 
 window.addEventListener('keydown', handleFirstTab);
 
@@ -34,8 +34,48 @@ function showHamburgerMenu() {
   hamburger.addEventListener('click', handleClick);
 };
 
+function changeSlide() {
+  const slidesContainer = document.querySelector('.boxes');
+  const slide = document.querySelector('.box');
+  const prevButton = document.querySelector('.slider__btn--left');
+  const nextButton = document.querySelector('.slider__btn--right');
+
+  nextButton.addEventListener('click', function() {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft += slideWidth;
+  });
+
+  prevButton.addEventListener('click', function() {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft -= slideWidth;
+  });
+};
+
+function showAnswer() {
+  const buttons = document.querySelectorAll('.faq__btn');
+  
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+      let panel = this.nextElementSibling;
+
+      if(panel.style.display === 'block') {
+        panel.style.display = 'none';
+        this.setAttribute('aria-expanded', 'false');
+        this.firstElementChild.src = '../img/caret-down-solid.svg';
+      } else {
+        panel.style.display = 'block';
+        this.setAttribute('aria-expanded', 'true');
+        this.firstElementChild.src = '../img/caret-up-solid.svg';
+      }
+    })
+  }
+};
+
+
 const init = function() {
   showHamburgerMenu();
+  changeSlide();
+  showAnswer();
 };
 
 document.addEventListener('DOMContentLoaded', init);
