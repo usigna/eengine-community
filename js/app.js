@@ -63,11 +63,11 @@ function showAnswer() {
       if(panel.style.display === 'block') {
         panel.style.display = 'none';
         this.setAttribute('aria-expanded', 'false');
-        this.firstElementChild.src = '../img/caret-down-solid.svg';
+        this.firstElementChild.src = './img/caret-down-solid.svg';
       } else {
         panel.style.display = 'block';
         this.setAttribute('aria-expanded', 'true');
-        this.firstElementChild.src = '../img/caret-up-solid.svg';
+        this.firstElementChild.src = './img/caret-up-solid.svg';
       }
     })
   }
