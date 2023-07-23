@@ -501,6 +501,7 @@ body.user-is-tabbing *:focus {
 
     @media screen and (min-width: $laptopWidth) {
       @include flex(row, center, space-between);
+      gap: 48px;
     }
   }
 
@@ -755,12 +756,26 @@ body.user-is-tabbing *:focus {
 }
 
 /* faq */
+.container {
+  @include flex(column, center, center);
+  gap: 48px;
+
+  @media screen and (min-width: $laptopWidth) {
+    @include flex(row, flex-start, space-between);
+  }
+}
+
 .faq {
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
   @include flex(column, center, center);
   gap: 24px;
+
+  @media screen and (min-width: $laptopWidth) {
+    width: 60%;
+  }
 }
 
 .faq__item {
@@ -784,6 +799,7 @@ body.user-is-tabbing *:focus {
 }
 
 .faq__sect {
+  background-color: $whiteColor;
   padding: 12px 24px;
   display: none;
   text-align: left;
@@ -795,16 +811,14 @@ body.user-is-tabbing *:focus {
 }
 
 .footer__wrapper {
-  font-size: 1.4rem;
-  @include flex(row, flex-end, space-between);
-  position: relative;
+  @include flex(column, center, center);
+  gap: 24px;
+
+  @media screen and (min-width: $tabletWidth) {
+    @include flex(row, flex-end, space-between);
+  }
 }
 
-.footer__img {
-  width: 30%;
-  line-height: 0;
-
-  img {
-    width: 100%;
-  }
+.copy {
+  font-size: 1.4rem;
 }
