@@ -1,9 +1,11 @@
-// for production only
-// window.onerror = function(message, url, lineNumber) {  
-//   return true;
-// };
+gsap.registerPlugin(ScrollTrigger);
 
-// web accessibility - don't touch this
+// for production only
+window.onerror = function(message, url, lineNumber) {  
+  return true;
+};
+
+// web accessibility
 function handleFirstTab(e) {
   if (e.key === 'Tab') {
     document.body.classList.add('user-is-tabbing');
@@ -71,11 +73,44 @@ function showAnswer() {
   }
 };
 
+function scrollEffect() {
+  const animateItemsLeft = document.querySelectorAll('.animate-left');
+  const animateItemsRight = document.querySelectorAll('.animate-right');
+
+  for (let i = 0; i < animateItemsLeft.length; i++) {
+    gsap.fromTo(animateItemsLeft[i], {x: '-10%', opacity: 0}, {x: '0', opacity: 1, duration: 1, ease: 'easeInOut', scrollTrigger: {
+      trigger: animateItemsLeft[i],
+      start: 'top 80%'
+    }})
+  }
+
+  for (let i = 0; i < animateItemsRight.length; i++) {
+    gsap.fromTo(animateItemsRight[i], {x: '10%', opacity: 0}, {x: '0', opacity: 1, duration: 1, ease: 'easeInOut', scrollTrigger: {
+      trigger: animateItemsRight[i],
+      start: 'top 80%'
+    }})
+  }
+};
+
+function showAnimations() {
+  const mobile = window.matchMedia('screen and (min-width: 1200px)');
+
+  if (mobile.matches) {
+    scrollEffect();
+  }
+
+  mobile.addListener( function(mobile) {
+      if (mobile.matches) {
+        scrollEffect();
+      }
+  });
+};
 
 const init = function() {
   showHamburgerMenu();
   changeSlide();
   showAnswer();
+  showAnimations();
 };
 
 document.addEventListener('DOMContentLoaded', init);

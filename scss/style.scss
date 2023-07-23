@@ -20,7 +20,7 @@ body {
   background-color: $whiteColor;
 }
 
-/* web accessibility - don't touch this */
+/* web accessibility */
 *:focus {
   outline: none;
 }
@@ -377,12 +377,20 @@ body.user-is-tabbing *:focus {
       left: -5%;
       bottom: 2px;
       z-index: -1;
+      -webkit-transition: -webkit-transform 0.2s;
+      transition: -webkit-transform 0.2s;
+      -o-transition: transform 0.2s;
       transition: transform 0.2s;
+      transition: transform 0.2s, -webkit-transform 0.2s;
+      -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
       transform: scaleX(0);
     }
 
     &:hover::before,
     &:focus::before {
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
       transform: scaleX(1);
     }
   
@@ -434,12 +442,20 @@ body.user-is-tabbing *:focus {
       top: 0;
       left: 0;
       z-index: -1;
+      -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
       transform: scaleX(0);
+      -webkit-transition: -webkit-transform 0.2s;
+      transition: -webkit-transform 0.2s;
+      -o-transition: transform 0.2s;
       transition: transform 0.2s;
+      transition: transform 0.2s, -webkit-transform 0.2s;
     }
 
     &:hover::before,
     &:focus::before {
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
       transform: scaleX(1);
     }
   }
@@ -471,12 +487,20 @@ body.user-is-tabbing *:focus {
 
     &::after {
       background-color: $darkBlueColor;
+      -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
       transform: scaleX(0);
+      -webkit-transition: -webkit-transform 0.2s;
+      transition: -webkit-transform 0.2s;
+      -o-transition: transform 0.2s;
       transition: transform 0.2s;
+      transition: transform 0.2s, -webkit-transform 0.2s;
     }
 
     &:hover::after,
     &:focus::after {
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
       transform: scaleX(1);
     }
   }
@@ -517,9 +541,15 @@ body.user-is-tabbing *:focus {
   }
 
   &--reverse {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
 
     @media screen and (min-width: $laptopWidth) {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
       flex-direction: row;
     }
   }
@@ -574,6 +604,8 @@ body.user-is-tabbing *:focus {
 
     .button-wrapper {
       @media screen and (min-width: $laptopWidth) {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
       }
     }
@@ -657,12 +689,20 @@ body.user-is-tabbing *:focus {
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    -o-transition: transform 0.2s;
     transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
   }
 
   &:hover::before,
   &:focus::before {
+    -webkit-transform: scale(100%);
+    -ms-transform: scale(100%);
     transform: scale(100%);
   }
 
@@ -671,6 +711,7 @@ body.user-is-tabbing *:focus {
     border-color: $darkBlueColor;
 
     img {
+      -webkit-filter: invert(100%);
       filter: invert(100%);
     }
   }
@@ -705,6 +746,8 @@ body.user-is-tabbing *:focus {
 }
 
 .box {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 100%;
   flex: 1 0 100%;
   @include flex(column, center, center);
   gap: 12px;
@@ -712,6 +755,8 @@ body.user-is-tabbing *:focus {
   border-radius: 25px;
 
   @media screen and (min-width: $laptopWidth) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 49%;
     flex: 1 0 49%;
   }
 
@@ -742,6 +787,8 @@ body.user-is-tabbing *:focus {
 
     @media screen and (min-width: $laptopWidth) {
       width: 65%;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
       align-items: flex-start;;
     }
 
